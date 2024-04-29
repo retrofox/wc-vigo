@@ -1,1 +1,1 @@
-console.log("Hello World! (from wcvigo-cat-card block)");
+console.log("Hello World! (from wc-vigo-cat-card block)");

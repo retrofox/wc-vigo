@@ -10,7 +10,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       cat-card
  *
- * @package Wcvigo
+ * @package wc-vigo
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function wcvigo_cat_card_block_init() {
+function wc_vigo_cat_card_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
-add_action( 'init', 'wcvigo_cat_card_block_init' );
+add_action( 'init', 'wc_vigo_cat_card_block_init' );
