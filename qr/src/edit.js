@@ -17,7 +17,7 @@ import './editor.scss';
 export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
-			{ __( 'QR block – hello from the editor!', 'qr' ) }
+			{ __( 'QR block - hello from the editor!', 'qr' ) }
 		</p>
 	);
 }
