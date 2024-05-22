@@ -10,9 +10,16 @@
 	"example": {},
 	"supports": {
 		"html": false,
-		"interactivity": true
+		"interactivity": true,
+		"supports": {
+			"align": true
+		}
 	},
 	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "center"
+		},
 		"content": {
 			"type": "string",
 			"default": "https://vigo.wordcamp.org/2024/"
