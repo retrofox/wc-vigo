@@ -2,7 +2,7 @@
 	"name": "qr",
 	"version": "0.1.0",
 	"description": "QR block",
-	"author": "The WordPress Contributors",
+	"author": "Damián Suárez (retrofox)",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
