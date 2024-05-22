@@ -19,5 +19,8 @@
 		"@wordpress/eslint-plugin": "^18.1.0",
 		"@wordpress/prettier-config": "^3.15.0",
 		"@wordpress/scripts": "^27.9.0"
+	},
+	"dependencies": {
+		"qrcode.react": "^3.1.0"
 	}
 }
