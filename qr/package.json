@@ -26,7 +26,6 @@
 		"@wordpress/hooks": "^3.58.0",
 		"@wordpress/i18n": "^4.58.0",
 		"@wordpress/icons": "^9.49.0",
-		"@wordpress/interactivity": "^5.7.0",
 		"qrcode.react": "^3.1.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
