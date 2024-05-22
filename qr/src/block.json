@@ -16,6 +16,10 @@
 		"content": {
 			"type": "string",
 			"default": "https://vigo.wordcamp.org/2024/"
+		},
+		"size": {
+			"type": "number",
+			"default": 128
 		}
 	},
 	"textdomain": "qr",

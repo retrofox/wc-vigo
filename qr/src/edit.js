@@ -8,7 +8,12 @@ import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
  * Internal dependencies
  */
 import './editor.scss';
-import { Panel, PanelBody, TextControl } from '@wordpress/components';
+import {
+	Panel,
+	PanelBody,
+	TextControl,
+	RangeControl,
+} from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -20,29 +25,41 @@ import { __ } from '@wordpress/i18n';
 export default function QRBlockEdit( props ) {
 	const { attributes, setAttributes } = props;
 
+	const { content, size } = attributes;
+
 	return (
 		<div { ...useBlockProps() }>
-			<div { ...useBlockProps() }>
-				<InspectorControls>
-					<Panel>
-						<PanelBody title="QR Code Settings">
-							<TextControl
-								label={ __( 'Content' ) }
-								value={ attributes?.content }
-								onChange={ ( value ) =>
-									setAttributes( { content: value } )
-								}
-								help={ __(
-									'The content to encode in the QR code.'
-								) }
-							/>
-						</PanelBody>
-					</Panel>
-				</InspectorControls>
+			<InspectorControls>
+				<Panel>
+					<PanelBody title="QR Code Settings">
+						<TextControl
+							label={ __( 'Content' ) }
+							value={ content }
+							onChange={ ( value ) =>
+								setAttributes( { content: value } )
+							}
+							help={ __(
+								'The content to encode in the QR code.'
+							) }
+						/>
 
-				<QRCodeSVG value={ attributes?.content } />
-				<p className="qr__content">{ attributes?.content }</p>
-			</div>
+						<RangeControl
+							step={ 10 }
+							value={ size }
+							min={ 50 }
+							max={ 500 }
+							label={ __( 'Size' ) }
+							onChange={ ( value ) =>
+								setAttributes( { size: value } )
+							}
+							help={ __( 'The size of the QR code in pixels.' ) }
+						/>
+					</PanelBody>
+				</Panel>
+			</InspectorControls>
+
+			<QRCodeSVG value={ attributes?.content } size={ size } />
+			<p className="qr__content">{ attributes?.content }</p>
 		</div>
 	);
 }
