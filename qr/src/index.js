@@ -10,7 +10,7 @@ import QRBlockEdit from './edit';
 import save from './save';
 import metadata from './block.json';
 import './style.scss';
-import { QRIcon } from '../icons/qr';
+import { QRIcon } from './icons/qr';
 
 /**
  * Every block starts by registering a new block type definition.
