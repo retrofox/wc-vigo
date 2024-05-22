@@ -32,8 +32,4 @@ registerBlockType( metadata.name, {
 	 * Add a custom Icon
 	 */
 	icon: QRIcon,
-
-	supports: {
-		align: true,
-	},
 } );
