@@ -6,7 +6,7 @@
   "title": "QR block",
   "category": "widgets",
   "icon": "smiley",
-  "description": "QR block",
+  "description": "Generate nice QR blocks for your website.",
   "example": {},
   "supports": {
     "html": false
