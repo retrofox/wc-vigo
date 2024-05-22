@@ -9,7 +9,14 @@
 	"description": "Generate nice QR blocks for your website.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"interactivity": true
+	},
+	"attributes": {
+		"content": {
+			"type": "string",
+			"default": "https://vigo.wordcamp.org/2024/"
+		}
 	},
 	"textdomain": "qr",
 	"editorScript": "file:./index.js",
