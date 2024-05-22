@@ -2,7 +2,12 @@
  * External dependencies
  */
 import { QRCodeSVG } from 'qrcode.react';
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { settings } from '@wordpress/icons';
+import {
+	useBlockProps,
+	InspectorControls,
+	BlockControls,
+} from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -13,6 +18,7 @@ import {
 	PanelBody,
 	TextControl,
 	RangeControl,
+	ToolbarDropdownMenu,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -57,6 +63,34 @@ export default function QRBlockEdit( props ) {
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
+
+			<BlockControls group="block">
+				<ToolbarDropdownMenu
+					className="wp-block-vigo-qr__size-dropdown"
+					icon={ settings }
+					label={ __( 'Size' ) }
+					popoverProps={ {
+						className: 'wp-block-vigo-qr__size-dropdown-popover',
+					} }
+					controls={ [
+						{
+							title: __( 'Small' ),
+							onClick: () => setAttributes( { size: 150 } ),
+							isActive: size === 150,
+						},
+						{
+							title: __( 'Medium' ),
+							onClick: () => setAttributes( { size: 250 } ),
+							isActive: size === 250,
+						},
+						{
+							title: __( 'Large' ),
+							onClick: () => setAttributes( { size: 350 } ),
+							isActive: size === 350,
+						},
+					] }
+				/>
+			</BlockControls>
 
 			<QRCodeSVG value={ attributes?.content } size={ size } />
 			<p className="qr__content">{ attributes?.content }</p>
