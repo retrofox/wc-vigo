@@ -1,3 +1,14 @@
 .wp-block-vigo-qr {
 	padding: 2px;
+	display: flex;
+	flex-direction: column;
+
+	.qr__content {
+		justify-content: center;
+		align-items: center;
+		color: #902040;
+		background-color: #eee;
+		border: 1px solid #ccc;
+		padding: 2px 8px;
+	}
 }

@@ -3,7 +3,6 @@
  */
 import { QRCodeSVG } from 'qrcode.react';
 import { useBlockProps } from '@wordpress/block-editor';
-import { Flex, FlexItem } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -20,15 +19,11 @@ export default function QRBlockEdit( props ) {
 	const { attributes } = props;
 
 	return (
-		<Flex direction="column">
-			<FlexItem>
-				<p { ...useBlockProps() }>
-					<QRCodeSVG value={ attributes?.content } />
-				</p>
-			</FlexItem>
-			<FlexItem>
-				<p>{ attributes?.content }</p>
-			</FlexItem>
-		</Flex>
+		<div { ...useBlockProps() }>
+			<div { ...useBlockProps() }>
+				<QRCodeSVG value={ attributes?.content } />
+				<p className="qr__content">{ attributes?.content }</p>
+			</div>
+		</div>
 	);
 }

@@ -1,10 +1,14 @@
+/**
+ * External dependencies
+ */
 import QRCode from 'qrcode.react';
 import { useBlockProps } from '@wordpress/block-editor';
 
-export default function save() {
+export default function save( { attributes } ) {
 	return (
-		<figure { ...useBlockProps.save() }>
-			<QRCode value="https://vigo.wordcamp.org/2024/" renderAs="svg" />
-		</figure>
+		<div { ...useBlockProps.save() }>
+			<QRCode value={ attributes?.content } renderAs="svg" />
+			<p className="qr__content">{ attributes?.content }</p>
+		</div>
 	);
 }
