@@ -4,7 +4,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 export default function save() {
 	return (
 		<figure { ...useBlockProps.save() }>
-			<QRCode value="Hola" renderAs="svg" />
+			<QRCode value="https://vigo.wordcamp.org/2024/" renderAs="svg" />
 		</figure>
 	);
 }
