@@ -12,9 +12,6 @@ import metadata from './block.json';
 import './style.scss';
 import { QRIcon } from '../icons/qr';
 
-
-// console.log( { QRIcon } );
-
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -34,6 +31,5 @@ registerBlockType( metadata.name, {
 	/*
 	 * Add a custom Icon
 	 */
-
 	icon: QRIcon,
 } );
