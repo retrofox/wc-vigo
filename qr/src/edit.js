@@ -18,6 +18,7 @@ import {
 	PanelBody,
 	TextControl,
 	RangeControl,
+	RadioControl,
 	ToolbarDropdownMenu,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -59,6 +60,22 @@ export default function QRBlockEdit( props ) {
 								setAttributes( { size: value } )
 							}
 							help={ __( 'The size of the QR code in pixels.' ) }
+						/>
+
+						<RadioControl
+							label={ __( 'Mode' ) }
+							selected={ attributes.mode }
+							options={ [
+								{ label: 'Static', value: 'static' },
+								{
+									label: 'Post link (dynamic)',
+									value: 'dynamic',
+								},
+								{ label: 'Interactive', value: 'interactive' },
+							] }
+							onChange={ ( value ) =>
+								setAttributes( { mode: value } )
+							}
 						/>
 					</PanelBody>
 				</Panel>

@@ -1,24 +1,25 @@
-/**
- * Use this file for JavaScript code that you want to run in the front-end
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any
- * JavaScript running in the front-end, then you should delete this file and remove
- * the `viewScript` property from `block.json`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
- */
+function toSvgString( qr, border, lightColor, darkColor ) {
+	if ( border < 0 ) {
+		throw new RangeError( 'Border must be non-negative' );
+	}
+	const parts = [];
+	for ( let y = 0; y < qr.size; y++ ) {
+		for ( let x = 0; x < qr.size; x++ ) {
+			if ( qr.getModule( x, y ) ) {
+				parts.push( `M${ x + border },${ y + border }h1v1h-1z` );
+			}
+		}
+	}
+	return `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 ${
+		qr.size + border * 2
+	} ${ qr.size + border * 2 }" stroke="none">
+<rect width="100%" height="100%" fill="${ lightColor }"/>
+<path d="${ parts.join( ' ' ) }" fill="${ darkColor }"/>
+</svg>
+`;
+}
 
 /* eslint-disable no-console */
 console.log( 'Hello World! (from vigo-qr block)' );
