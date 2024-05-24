@@ -32,7 +32,7 @@ import { __ } from '@wordpress/i18n';
 export default function QRBlockEdit( props ) {
 	const { attributes, setAttributes } = props;
 
-	const { content, size } = attributes;
+	const { content, size, mode } = attributes;
 
 	return (
 		<div { ...useBlockProps() }>
@@ -46,8 +46,9 @@ export default function QRBlockEdit( props ) {
 								setAttributes( { content: value } )
 							}
 							help={ __(
-								'The content to encode in the QR code.'
+								'The content to encode in the QR code. Enabled only in static mode.'
 							) }
+							disabled={ mode === 'dynamic' }
 						/>
 
 						<RangeControl
