@@ -8,6 +8,7 @@ import {
 	InspectorControls,
 	BlockControls,
 } from '@wordpress/block-editor';
+import { useEntityProp } from '@wordpress/core-data';
 
 /**
  * Internal dependencies
@@ -22,6 +23,8 @@ import {
 	ToolbarDropdownMenu,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { useEffect } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 
 /**
  * Edit function for the QR block.
@@ -30,9 +33,24 @@ import { __ } from '@wordpress/i18n';
  * @return {Element} Element to render.
  */
 export default function QRBlockEdit( props ) {
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, context } = props;
+	const { postType, postId } = context;
 
 	const { content, size, mode } = attributes;
+
+	const [ postTitle = '' ] = useEntityProp(
+		'postType',
+		postType,
+		'title',
+		postId
+	);
+
+	useEffect( () => {
+		if ( mode !== 'dynamic' ) {
+			return;
+		}
+		setAttributes( { content: postTitle } );
+	}, [ mode, postTitle, setAttributes ] );
 
 	return (
 		<div { ...useBlockProps() }>
@@ -69,7 +87,7 @@ export default function QRBlockEdit( props ) {
 							options={ [
 								{ label: 'Static', value: 'static' },
 								{
-									label: 'Post link (dynamic)',
+									label: 'Post Title (dynamic)',
 									value: 'dynamic',
 								},
 								{ label: 'Interactive', value: 'interactive' },
