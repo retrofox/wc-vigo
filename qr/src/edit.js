@@ -129,7 +129,17 @@ export default function QRBlockEdit( props ) {
 			</BlockControls>
 
 			<QRCodeSVG value={ attributes?.content } size={ size } />
-			<p className="qr__content">{ attributes?.content }</p>
+			{ mode !== 'interactive' ? (
+				<p className="qr__content">{ attributes?.content }</p>
+			) : (
+				<TextControl
+					className="qr__content-input"
+					value={ attributes?.content }
+					onChange={ ( value ) =>
+						setAttributes( { content: value } )
+					}
+				/>
+			) }
 		</div>
 	);
 }
