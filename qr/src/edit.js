@@ -9,11 +9,6 @@ import {
 	BlockControls,
 } from '@wordpress/block-editor';
 import { useEntityProp } from '@wordpress/core-data';
-
-/**
- * Internal dependencies
- */
-import './editor.scss';
 import {
 	Panel,
 	PanelBody,
@@ -24,7 +19,11 @@ import {
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useEffect } from '@wordpress/element';
-import { useSelect } from '@wordpress/data';
+
+/**
+ * Internal dependencies
+ */
+import './editor.scss';
 
 /**
  * Edit function for the QR block.
@@ -38,7 +37,7 @@ export default function QRBlockEdit( props ) {
 
 	const { content, size, mode } = attributes;
 
-	const [ postTitle = '' ] = useEntityProp(
+	const [ postTitle = '', setTitle ] = useEntityProp(
 		'postType',
 		postType,
 		'title',
@@ -61,12 +60,13 @@ export default function QRBlockEdit( props ) {
 							label={ __( 'Content' ) }
 							value={ content }
 							onChange={ ( value ) =>
-								setAttributes( { content: value } )
+								mode === 'dynamic'
+									? setTitle( value )
+									: setAttributes( { content: value } )
 							}
 							help={ __(
-								'The content to encode in the QR code. Enabled only in static mode.'
+								'The content to encode in the QR code.'
 							) }
-							disabled={ mode === 'dynamic' }
 						/>
 
 						<RangeControl
