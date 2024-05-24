@@ -31,6 +31,7 @@
 			"default": "static"
 		}
 	},
+	"usesContext": [ "postType", "postId" ],
 	"textdomain": "qr",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
