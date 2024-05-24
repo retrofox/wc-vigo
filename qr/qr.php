@@ -28,3 +28,17 @@ function vigo_qr_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'vigo_qr_block_init' );
+
+add_action( 'enqueue_block_assets', 'myplugin_enqueue_if_block_is_present' );
+function myplugin_enqueue_if_block_is_present(){
+
+    if ( has_block( 'my-plugin/my-block' ) || true ) {
+        wp_enqueue_script(
+			'myplugin_script',
+			plugin_dir_url( __FILE__ ) . 'assets/js/qrcodegen.js',
+			array(),
+			'1.0.0',
+			true
+		);
+    }
+}
