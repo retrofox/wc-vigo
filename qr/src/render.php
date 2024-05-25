@@ -11,11 +11,12 @@
  */
 
 ?>
-	<?php echo $content; ?>
+<?php echo $content; ?>
 
-	<div class="wp-block-vigo-qr aligncenter">
-		<div>{ Render ACÁ }</div>
-		<p class="qr__content"><?php echo get_the_title(); ?></p>
-	</div>
-<pre>
-</pre>
+<div
+	<?php echo get_block_wrapper_attributes(); ?>
+	data-wp-interactive="vigo/qr"
+>
+	<div>{ Render ACÁ }</div>
+	<p class="qr__content"><?php echo get_the_title(); ?></p>
+</div>

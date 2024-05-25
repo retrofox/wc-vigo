@@ -22,5 +22,5 @@ function toSvgString( qr, border, lightColor, darkColor ) {
 }
 
 /* eslint-disable no-console */
-console.log( 'Hello World! (from vigo-qr block)' );
+console.log( '(002) Hello World! (from vigo-qr block)' );
 /* eslint-enable no-console */
